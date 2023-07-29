@@ -1,18 +1,18 @@
 <template>
     <div id="container">
-        <div>
-            <b-icon class="icon" icon="file-earmark-text"></b-icon>
-        </div>
-        <div>
+        <div class="empty" v-if="lists.length === 0">
+            <b-icon class="icon" alt="Ícone vazio" icon="file-earmark-text"></b-icon>
             <p class="firstLine">Você ainda não tem listas cadastradas</p>
-        </div>
-        <div>
             <p class="secondLine">Crie listas e organize seus itens a fazer</p>
         </div>
-        <b-list-group class="list">
-            <b-list-group-item class="itemList">Mercado <b-icon class="iconEdit" icon="pencil"></b-icon></b-list-group-item>
-            <b-list-group-item class="itemList">Trabalho <b-icon class="iconEdit" icon="pencil"></b-icon></b-list-group-item>
-        </b-list-group>
+        <div v-else class="watchList">
+            <b-list-group class="list" v-for="item in lists" :key="item.id" >
+                <b-list-group-item class="itemList"> {{ item.title }} 
+                    <b-icon class="iconEdit" alt="Ícone editar" icon="pencil"></b-icon>
+                    <b-icon class="iconRemove" alt="Ícone remover" icon="trash"></b-icon>
+                </b-list-group-item>
+            </b-list-group>
+        </div>
     </div>
 </template>
 
@@ -20,6 +20,9 @@
 export default {
   name: 'ListBody',
   props: {
+    lists: []
+  },
+  methods: {
     
   }
 }
@@ -35,9 +38,17 @@ export default {
 }
 
 .icon {
-    width: 56px;
-    height: 56px;
-    margin-top: 64px;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 4rem;
 }
 
 .firstLine {
@@ -65,7 +76,17 @@ export default {
     color: #fff;
 }
 
+.iconRemove {
+    width: 3%;
+    float: right;
+    color: #fff; 
+}
+
 .list-group-item {
     color: #fff;
+}
+
+.watchList {
+    margin-top: 4rem;
 }
 </style>

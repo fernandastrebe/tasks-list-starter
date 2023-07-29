@@ -1,23 +1,45 @@
 <template>
     <div>
-        <div class="container">
-            <div class="inputList">
-                <b-form-input v-model="text" placeholder="Adicione uma nova lista"></b-form-input>
+        <b-form @submit.prevent="onSubmit"> 
+            <div class="container">
+                <div class="inputList">
+                    <b-form-input v-model="title" placeholder="Adicione uma nova lista"></b-form-input>
+                </div>
+                <div class="buttonList">
+                    <b-button class="button" type="submit">Criar <b-icon  class="addIcon" icon="plus-circle"></b-icon></b-button>
+                </div>
             </div>
-            <div class="buttonList">
-                <b-button class="button">Criar <b-icon  class="addIcon" icon="plus-circle"></b-icon></b-button>
-            </div>
-        </div>
+        </b-form>
     <!-- <hr/> -->
     </div>
 </template>
 
 <script>
+
+
 export default {
   name: 'InputList',
   props: {
-    
+    lists: []
+  },
+  data(){
+    return{
+        title: ''
+    }
+  },
+  methods:{
+    onSubmit(){
+        if(this.title !== ''){
+            this.lists.push({
+                text: this.title
+            })
+        }
+        else {
+            alert('Digite o nome da lista que quer criar! :D')
+        }
+    }
   }
+  
 }
 </script>
 
