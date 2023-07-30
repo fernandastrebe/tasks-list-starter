@@ -7,9 +7,9 @@
         </div>
         <div v-else class="watchList">
             <b-list-group class="list" v-for="item in lists" :key="item.id" >
-                <b-list-group-item class="itemList"> {{ item.title }} 
-                    <b-icon class="iconEdit" alt="Ícone editar" icon="pencil"></b-icon>
-                    <b-icon class="iconRemove" alt="Ícone remover" icon="trash"></b-icon>
+                <b-list-group-item class="itemList"> {{ item.title }}
+                    <b-icon class="iconEdit" @click="handleSetTitle(item.id)" alt="Ícone editar" icon="pencil"></b-icon>
+                    <b-icon class="iconRemove" @click="handleDeleteList(item.id)" alt="Ícone remover" icon="trash"></b-icon>
                 </b-list-group-item>
             </b-list-group>
         </div>
@@ -23,6 +23,12 @@ export default {
     lists: []
   },
   methods: {
+    handleDeleteList(id){
+        this.$emit('deleteItem', id);
+    },
+    handleSetTitle(id){
+        this.$emit('setTitle', id);
+    }
     
   }
 }
@@ -89,4 +95,5 @@ export default {
 .watchList {
     margin-top: 4rem;
 }
+
 </style>

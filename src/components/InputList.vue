@@ -6,7 +6,8 @@
                     <b-form-input v-model="title" placeholder="Adicione uma nova lista"></b-form-input>
                 </div>
                 <div class="buttonList">
-                    <b-button class="button" type="submit">Criar <b-icon  class="addIcon" icon="plus-circle"></b-icon></b-button>
+                    <b-button class="button" type="submit" v-if="!titleChanged">Criar <b-icon class="addIcon" icon="plus-circle"></b-icon></b-button>
+                    <b-button class="button" @click="handleChangeTitle" v-else>Alterar</b-button>
                 </div>
             </div>
         </b-form>
@@ -20,29 +21,38 @@
 export default {
   name: 'InputList',
   props: {
-    lists: []
+    lists: [],
+    titleChanged: String
   },
   data(){
     return{
         title: '',
-        listsCopy: [],
     }
   },
   methods:{
     onSubmit(){
-        this.listsCopy = [...this.lists];
         if(this.title !== ""){
-            this.listsCopy.push({
-                id: Date.now(),
-                title: this.title
-            })
-            this.$emit('refreshArrayList', this.listsCopy);
+            this.$emit('refreshTitle', this.title);
+            this.title = '';
         }
         else {
             alert('Digite o nome da lista que quer criar! :D');
             return;
         }
+
+    },
+    handleChangeTitle(){
+        this.$emit('changeTitle', this.title);
     }
+  },
+  watch: {
+    titleChanged: {
+        immediate:true,
+        handler(value) {
+            this.title = value;
+            
+        }
+        }
   }
   
 }
