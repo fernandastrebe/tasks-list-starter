@@ -73,7 +73,15 @@ export default {
 .itemList {
     margin-bottom: 13px;
     background-color: #58a7d4;
+    cursor: pointer;
+    align-items: center;
     
+}
+
+.itemList:hover {
+    background-color: #58a7d495;
+    transition: 0.5s;
+    transform: translate(1rem, 0);
 }
 
 .iconEdit {
@@ -94,6 +102,8 @@ export default {
 
 .watchList {
     margin-top: 4rem;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 </style>

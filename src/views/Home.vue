@@ -68,6 +68,11 @@ export default {
         await this.getAllList();
         this.titleChanged = '';
         this.idTitleChanged = '';
+        // api.get('/tasks', {
+        //   params: {
+        //     listId: 2
+        //   }
+        // })
       } catch (error) {
         alert(error);
       }

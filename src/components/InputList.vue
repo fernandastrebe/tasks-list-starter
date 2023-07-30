@@ -79,6 +79,7 @@ export default {
 
 .button {
     background-color: #1E6F9F;
+    cursor: pointer;
 }
 
 .addIcon {
