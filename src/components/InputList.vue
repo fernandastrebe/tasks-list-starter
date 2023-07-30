@@ -24,18 +24,20 @@ export default {
   },
   data(){
     return{
-        title: ''
+        title: '',
+        listsCopy: [],
     }
   },
   methods:{
     onSubmit(){
-        if(this.title !== ''){
-            this.lists.push({
-                text: this.title
-            })
+        this.listsCopy = [...this.lists];
+        if(this.title !== ""){
+            
+            console.log(this.listsCopy);
         }
         else {
-            alert('Digite o nome da lista que quer criar! :D')
+            alert('Digite o nome da lista que quer criar! :D');
+            return;
         }
     }
   }
