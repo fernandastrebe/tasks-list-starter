@@ -14,7 +14,8 @@ const routes = [
   {
     path: '/tasksList',
     name: 'tasksList',
-    component: TasksList
+    component: TasksList,
+    props: true
   }
   
 ]

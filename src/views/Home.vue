@@ -11,7 +11,6 @@
       :lists="lists"
       @deleteItem="handleDeleteList"
       @setTitle="handleSetTitle"
-      @sendToTasks="handleSendToTasks"
     />
   </div>
 </template>
@@ -83,22 +82,6 @@ export default {
         alert(error);
       }
     },
-    async handleSendToTasks(id) {
-      try {
-        await api.get("/tasks", {
-          params: {
-            listId: id,
-          },
-        });
-      } catch (error) {
-        alert(error);
-      }
-    },
-    // api.get('/tasks', {
-    //   params: {
-    //     listId: 2
-    //   }
-    // })
   },
 };
 </script>

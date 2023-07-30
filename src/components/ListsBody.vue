@@ -7,7 +7,7 @@
         </div>
         <div v-else class="watchList">
             <b-list-group class="list" v-for="item in lists" :key="item.id" >
-                <b-list-group-item class="itemList"> <router-link to="/tasksList"><span @click="handleSendToTasks(item.id)">{{ item.title }}</span></router-link>
+                <b-list-group-item class="itemList"> <span @click="handleSendToTasks(item.id)">{{ item.title }}</span>
                     <b-icon class="iconEdit" @click="handleSetTitle(item.id)" alt="Ícone editar" icon="pencil"></b-icon>
                     <b-icon class="iconRemove" @click="handleDeleteList(item.id, item.title)" alt="Ícone remover" icon="trash"></b-icon>
                 </b-list-group-item>
@@ -30,7 +30,7 @@ export default {
         this.$emit('setTitle', id);
     },
     handleSendToTasks(id){
-        this.$emit('sendToTasks', id);
+        this.$router.push({ name: 'tasksList', params: { id }})
     }
     
   }
