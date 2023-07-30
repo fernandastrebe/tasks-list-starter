@@ -31,19 +31,19 @@ export default {
 .container {
     display: flex;
     align-content: center;
-    width: 736px;
-    margin-top: -20px;
+    width: 46rem;
+    margin-top: -1.25rem;
 }
 
 .inputList {
-    width: 586px;
-    margin-right: 8px;
-    margin-left: 8px;
+    width: 36.63rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     
 }
 
 .buttonList {
-    width: 90px;
+    width: 5.63rem;
 }
 
 .button {
@@ -51,9 +51,9 @@ export default {
 }
 
 .addIcon {
-    width: 16px;
-    height: 16px;
-    margin-bottom: 2px;
+    width: 1rem;
+    height: 1rem;
+    margin-bottom: 0.13rem;
 }
 
 /* hr {

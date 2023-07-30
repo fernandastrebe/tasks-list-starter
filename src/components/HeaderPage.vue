@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .header{
   background-color: #B0E0E6;
-  height: 200px;
+  height: 12.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,13 +27,13 @@ export default {
 .to {
   color: #fff;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 
 .do {
   color: #1E6F9F;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 
 </style>

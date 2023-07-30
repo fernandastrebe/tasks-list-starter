@@ -7,9 +7,9 @@
         </div>
         <div v-else class="watchList">
             <b-list-group class="list" v-for="item in lists" :key="item.id" >
-                <b-list-group-item class="itemList"> {{ item.title }}
+                <b-list-group-item class="itemList"> <router-link to="/tasksList"><span @click="handleSendToTasks(item.id)">{{ item.title }}</span></router-link>
                     <b-icon class="iconEdit" @click="handleSetTitle(item.id)" alt="Ícone editar" icon="pencil"></b-icon>
-                    <b-icon class="iconRemove" @click="handleDeleteList(item.id)" alt="Ícone remover" icon="trash"></b-icon>
+                    <b-icon class="iconRemove" @click="handleDeleteList(item.id, item.title)" alt="Ícone remover" icon="trash"></b-icon>
                 </b-list-group-item>
             </b-list-group>
         </div>
@@ -23,11 +23,14 @@ export default {
     lists: []
   },
   methods: {
-    handleDeleteList(id){
-        this.$emit('deleteItem', id);
+    handleDeleteList(id, title){
+        this.$emit('deleteItem', id, title);
     },
     handleSetTitle(id){
         this.$emit('setTitle', id);
+    },
+    handleSendToTasks(id){
+        this.$emit('sendToTasks', id);
     }
     
   }
@@ -67,11 +70,11 @@ export default {
 }
 
 .list {
-    width: 736px;
+    width: 46rem;
 }
 
 .itemList {
-    margin-bottom: 13px;
+    margin-bottom: 0.81rem;
     background-color: #58a7d4;
     cursor: pointer;
     align-items: center;
@@ -104,6 +107,11 @@ export default {
     margin-top: 4rem;
     display: flex;
     flex-direction: column-reverse;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
 </style>

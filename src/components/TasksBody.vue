@@ -40,9 +40,9 @@ export default {
 }
 
 .icon {
-    width: 56px;
-    height: 56px;
-    margin-top: 64px;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 4rem;
 }
 
 .firstLine {
@@ -55,11 +55,11 @@ export default {
 }
 
 .list {
-    width: 736px;
+    width: 46rem;
 }
 
 .itemList {
-    margin-bottom: 13px;
+    margin-bottom: 0.81rem;
     background-color: #58a7d4;
     
 }

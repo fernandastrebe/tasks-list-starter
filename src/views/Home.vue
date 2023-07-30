@@ -1,8 +1,18 @@
 <template>
   <div id="home">
     <Header />
-    <InputList :lists="lists" :titleChanged="titleChanged" @refreshTitle="handleInsertList" @changeTitle="handleChangeTitle" />
-    <ListsBody :lists="lists" @deleteItem="handleDeleteList" @setTitle="handleSetTitle" />
+    <InputList
+      :lists="lists"
+      :titleChanged="titleChanged"
+      @refreshTitle="handleInsertList"
+      @changeTitle="handleChangeTitle"
+    />
+    <ListsBody
+      :lists="lists"
+      @deleteItem="handleDeleteList"
+      @setTitle="handleSetTitle"
+      @sendToTasks="handleSendToTasks"
+    />
   </div>
 </template>
 
@@ -22,8 +32,8 @@ export default {
   data() {
     return {
       lists: [],
-      titleChanged: '',
-      idTitleChanged: ''
+      titleChanged: "",
+      idTitleChanged: "",
     };
   },
   async mounted() {
@@ -46,38 +56,50 @@ export default {
         alert(error);
       }
     },
-    async handleDeleteList(id) {
+    async handleDeleteList(id, title) {
       try {
+        if(confirm('Você realmente quer excluir a lista: ' + title + '?')){
         await api.delete(`/lists/${id}`);
         await this.getAllList();
-      } catch (error) {
+      }} catch (error) {
         alert(error);
       }
     },
-    async handleSetTitle(id){
-      this.lists.filter(list => {
-        if (list.id === id){
+    async handleSetTitle(id) {
+      this.lists.filter((list) => {
+        if (list.id === id) {
           this.titleChanged = list.title;
           this.idTitleChanged = id;
         }
-      })
+      });
     },
-    async handleChangeTitle(title){
+    async handleChangeTitle(title) {
       try {
-        await api.put(`/lists/${this.idTitleChanged}`, {title});
+        await api.put(`/lists/${this.idTitleChanged}`, { title });
         await this.getAllList();
-        this.titleChanged = '';
-        this.idTitleChanged = '';
-        // api.get('/tasks', {
-        //   params: {
-        //     listId: 2
-        //   }
-        // })
+        this.titleChanged = "";
+        this.idTitleChanged = "";
       } catch (error) {
         alert(error);
       }
-    }
-  }
+    },
+    async handleSendToTasks(id) {
+      try {
+        await api.get("/tasks", {
+          params: {
+            listId: id,
+          },
+        });
+      } catch (error) {
+        alert(error);
+      }
+    },
+    // api.get('/tasks', {
+    //   params: {
+    //     listId: 2
+    //   }
+    // })
+  },
 };
 </script>
 
