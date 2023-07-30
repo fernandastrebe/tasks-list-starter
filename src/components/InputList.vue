@@ -32,8 +32,11 @@ export default {
     onSubmit(){
         this.listsCopy = [...this.lists];
         if(this.title !== ""){
-            
-            console.log(this.listsCopy);
+            this.listsCopy.push({
+                id: Date.now(),
+                title: this.title
+            })
+            this.$emit('refreshArrayList', this.listsCopy);
         }
         else {
             alert('Digite o nome da lista que quer criar! :D');

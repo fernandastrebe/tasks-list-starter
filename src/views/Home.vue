@@ -1,8 +1,8 @@
 <template>
   <div id="home">
     <Header/>
-    <InputList :lists="lists" />
-    <ListsBody :lists="lists" />
+    <InputList :lists="lists" @refreshArrayList="setList" />
+    <ListsBody :lists="listsCopy" />
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   },
   data(){
     return {
-      lists: []
+      lists: [],
+      listsCopy: []
     }
   },
   async mounted() {
@@ -31,6 +32,12 @@ export default {
         
       } catch (error) {
           alert(error);
+      }
+    },
+    methods: {
+      setList(listsCopy) {
+        this.lists = [...listsCopy];
+        console.log(this.lists);
       }
     }
 }
