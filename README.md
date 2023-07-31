@@ -1,5 +1,10 @@
 # tasks-list-starter
 
+## Figma with design
+```
+https://www.figma.com/file/4f4TtTFb8KXI1kCARfGoeS/toDo?type=design&node-id=0%3A1&mode=design&t=5XIp5crYV8XYHmoQ-1
+```
+
 ## Project setup
 ```
 npm install
@@ -10,12 +15,17 @@ npm install
 npm run serve
 ```
 
-### Instale globalmente o JSON Server, comando:
+### Install the Json Server globally, command:
 ```
 npm install -g json-server
 ```
 
-### Rode seu fake REST API com este comando:
+### Run your fake REST API, command:
 ```
  json-server --delay 500 db.json
+ ```
+
+ ### Run the unit tests
+ ```
+ npm run test:watch
  ```
