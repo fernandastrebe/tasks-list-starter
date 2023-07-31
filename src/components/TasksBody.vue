@@ -8,13 +8,14 @@
       <b-list-group class="list" v-for="item in tasks" :key="item.id">
         <b-list-group-item class="itemList">
           <input
+            @click="handleConfirmTask(item.id, item.check)"
             class="form-check-input"
             type="checkbox"
-            value=""
+            :checked="item.check ? 'checked' : '' " 
             id="flexCheckDefault"
           />
           {{ item.title }}
-          <b-icon class="iconRemove" icon="trash"></b-icon>
+          <b-icon @click="handleDeleteTask(item.id, item.title)" class="iconRemove" icon="trash"></b-icon>
         </b-list-group-item>
       </b-list-group>
     </div>
@@ -26,6 +27,14 @@ export default {
   name: "ListBody",
   props: {
     tasks: []
+  },
+  methods: {
+    handleDeleteTask(id, title){
+        this.$emit('deleteItem', id, title);
+    },
+    handleConfirmTask(id, check){
+      this.$emit('confirmItem', id, check);
+    }
   }
   
 };

@@ -1,22 +1,50 @@
 {
-  "lists": [{
+  "lists": [
+    {
       "id": 1,
       "title": "Mercado"
-  },{
+    },
+    {
       "id": 2,
       "title": "Trabalho"
-  }],
-  "tasks": [{
-      "id": 1,
-      "listId": 1,
-      "title": "Comprar arroz"
-  }, { 
+    }
+  ],
+  "tasks": [
+    {
       "id": 2,
       "listId": 1,
-      "title": "Comprar feijão"
-  }, { 
+      "title": "Comprar feijão",
+      "check": false
+    },
+    {
       "id": 3,
       "listId": 2,
-      "title": "Reunião às 10:00"
-  }]
+      "title": "Reunião às 10:00",
+      "check": false
+    },
+    {
+      "title": "Organizar daily",
+      "listId": 2,
+      "id": 5,
+      "check": true
+    },
+    {
+      "title": "teste2",
+      "listId": 2,
+      "check": false,
+      "id": 6
+    },
+    {
+      "title": "Comprar arroz",
+      "listId": 1,
+      "check": true,
+      "id": 7
+    },
+    {
+      "title": "Comprar shampoo",
+      "listId": 1,
+      "check": false,
+      "id": 8
+    }
+  ]
 }

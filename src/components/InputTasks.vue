@@ -10,7 +10,10 @@
           </div>
         </router-link>
         <div class="inputList">
-          <b-form-input v-model="title" placeholder="Adicione uma nova tarefa"></b-form-input>
+          <b-form-input
+            v-model="title"
+            placeholder="Adicione uma nova tarefa"
+          ></b-form-input>
         </div>
         <div class="buttonList">
           <b-button class="button" type="submit"
@@ -26,24 +29,22 @@
 <script>
 export default {
   name: "InputTasks",
-  data(){
-    return{
-        title: '',
-    }
+  data() {
+    return {
+      title: "",
+    };
   },
   methods: {
-    onSubmit(){
-        if(this.title !== ""){
-            this.$emit('insertNewTask', this.title);
-            this.title = '';
-        }
-        else {
-            alert('Digite o nome da tarefa que quer criar! :D');
-            return;
-        }
-
-    }
-  }
+    onSubmit() {
+      if (this.title !== "") {
+        this.$emit("insertTask", this.title);
+        this.title = "";
+      } else {
+        alert("Digite o nome da tarefa que quer criar! :D");
+        return;
+      }
+    },
+  },
 };
 </script>
 

@@ -1,8 +1,12 @@
 <template>
   <div id="tasksList">
     <Header />
-    <InputTasks :tasks="tasks" @insertNewTask="handleInsertTask" />
-    <TasksBody :tasks="tasks" />
+    <InputTasks :tasks="tasks" @insertTask="handleInsertTask" />
+    <TasksBody
+      :tasks="tasks"
+      @deleteItem="handleDeleteTask"
+      @confirmItem="handleConfirmTask"
+    />
   </div>
 </template>
 
@@ -43,14 +47,37 @@ export default {
         alert(error);
       }
     },
-  },
-  async handleInsertTask(title) {
-    try {
-      await api.post("/tasks", { title });
-      await this.getTasks();
-    } catch (error) {
-      alert(error);
-    }
+    async handleInsertTask(title) {
+      try {
+        await api.post("/tasks", {
+          title,
+          listId: this.idList,
+          check: false,
+        });
+        await this.getTasks();
+      } catch (error) {
+        alert(error);
+      }
+    },
+    async handleDeleteTask(id, title) {
+      try {
+        if (confirm("Você realmente quer excluir a tarefa: " + title + "?")) {
+          await api.delete(`/tasks/${id}`);
+          await this.getTasks();
+        }
+      } catch (error) {
+        alert(error);
+      }
+    },
+    async handleConfirmTask(id, check) {
+      try {
+        await api.patch(`/tasks/${id}`, {
+          check: !check,
+        });
+      } catch (error) {
+        alert(error);
+      }
+    },
   },
 };
 </script>
