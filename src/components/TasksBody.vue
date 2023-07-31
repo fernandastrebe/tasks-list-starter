@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <div class="empty" v-if="tasks.length === 0">
-      <b-icon class="icon" icon="file-earmark-text"></b-icon>
+      <b-icon class="icon" alt="Ícone vazio" icon="file-earmark-text"></b-icon>
       <p class="firstLine">Você ainda não tem tarefas cadastradas</p>
     </div>
     <div v-else class="watchTasks">
@@ -13,9 +13,10 @@
             type="checkbox"
             :checked="item.check ? 'checked' : '' " 
             id="flexCheckDefault"
+            alt="Botão para validar a tarefa realizada"
           />
           {{ item.title }}
-          <b-icon @click="handleDeleteTask(item.id, item.title)" class="iconRemove" icon="trash"></b-icon>
+          <b-icon alt="Botão para excluir uma tarefa" @click="handleDeleteTask(item.id, item.title)" class="iconRemove" icon="trash"></b-icon>
         </b-list-group-item>
       </b-list-group>
     </div>

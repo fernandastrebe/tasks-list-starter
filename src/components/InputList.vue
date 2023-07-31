@@ -3,11 +3,11 @@
         <b-form @submit.prevent="onSubmit"> 
             <div class="container">
                 <div class="inputList">
-                    <b-form-input v-model="title" placeholder="Adicione uma nova lista"></b-form-input>
+                    <b-form-input v-model="title" alt="Campo para inserir uma nova lista" placeholder="Adicione uma nova lista"></b-form-input>
                 </div>
                 <div class="buttonList">
-                    <b-button class="button" type="submit" v-if="!titleChanged">Criar <b-icon class="addIcon" icon="plus-circle"></b-icon></b-button>
-                    <b-button class="button" @click="handleChangeTitle" v-else>Alterar</b-button>
+                    <b-button class="button"  alt="Botão para adicionar uma nova lista" type="submit" v-if="!titleChanged">Criar <b-icon class="addIcon" icon="plus-circle"></b-icon></b-button>
+                    <b-button class="button" alt="Botão para alterar o nome de uma lista" @click="handleChangeTitle" v-else>Alterar</b-button>
                 </div>
             </div>
         </b-form>

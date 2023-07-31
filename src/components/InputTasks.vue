@@ -3,7 +3,7 @@
     <b-form @submit.prevent="onSubmit">
       <div class="container">
         <router-link to="/">
-          <div class="buttonReturnArea">
+          <div class="buttonReturnArea" alt="Botão para voltar as listas">
             <b-button class="button"
               ><b-icon class="returnIcon" icon="arrow-left"></b-icon
             ></b-button>
@@ -13,9 +13,10 @@
           <b-form-input
             v-model="title"
             placeholder="Adicione uma nova tarefa"
+            alt="Campo para inserir uma nova tarefa"
           ></b-form-input>
         </div>
-        <div class="buttonList">
+        <div class="buttonList" alt="Botão de adicionar uma nova tarefa">
           <b-button class="button" type="submit"
             >Criar <b-icon class="addIcon" icon="plus-circle"></b-icon
           ></b-button>
