@@ -10,15 +10,12 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Instale globalmente o JSON Server, comando:
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm install -g json-server
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Rode seu fake REST API com este comando:
+```
+ json-server --delay 500 db.json
+ ```

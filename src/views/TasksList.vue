@@ -1,7 +1,7 @@
 <template>
   <div id="tasksList">
     <Header />
-    <InputTasks :tasks="tasks" />
+    <InputTasks :tasks="tasks" @insertNewTask="handleInsertTask" />
     <TasksBody :tasks="tasks" />
   </div>
 </template>
@@ -27,13 +27,11 @@ export default {
   },
   async mounted() {
     await this.getTasks();
-    
   },
   methods: {
     async getTasks() {
       try {
         this.idList = this.$route.params.id;
-        console.log(this.idList);
         const { data } = await api.get("/tasks", {
           params: {
             listId: this.idList,
@@ -45,6 +43,14 @@ export default {
         alert(error);
       }
     },
+  },
+  async handleInsertTask(title) {
+    try {
+      await api.post("/tasks", { title });
+      await this.getTasks();
+    } catch (error) {
+      alert(error);
+    }
   },
 };
 </script>

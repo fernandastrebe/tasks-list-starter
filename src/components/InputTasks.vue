@@ -34,7 +34,7 @@ export default {
   methods: {
     onSubmit(){
         if(this.title !== ""){
-            this.$emit('refreshTitle', this.title);
+            this.$emit('insertNewTask', this.title);
             this.title = '';
         }
         else {
